@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xiao Yang, Ph.D. | Quantitative Psychology & Data Science</title>
+<meta name="description" content="Xiao Yang, Ph.D. - quantitative psychologist and independent researcher studying people as they change over time.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&display=swap" rel="stylesheet">
+<style>
+:root { --paper:#fbf9f4; --ink:#1d1d1f; --muted:#5f5a52; --rule:#d9d3c5; --red:#c0392b; --blue:#1f4e79; --hi:#fff0b3; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--paper); color:var(--ink); font-family:"Newsreader",Georgia,serif; font-size:1.2rem; line-height:1.6; }
+a { color:var(--blue); text-underline-offset:3px; }
+a:hover { background:var(--hi); }
+:focus-visible { outline:3px solid var(--red); outline-offset:2px; }
+.mono { font-family:"IBM Plex Mono",ui-monospace,monospace; }
+
+.strip { border-bottom:1px solid var(--ink); font-family:"IBM Plex Mono",monospace; font-size:.74rem; letter-spacing:.06em; text-transform:uppercase; }
+.strip div { width:min(1080px,calc(100% - 2rem)); margin:0 auto; padding:.55rem 0; display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+
+.paper { width:min(700px,calc(100% - 2rem)); margin:0 auto; padding:3rem 0 4rem; }
+@media (min-width:1180px){ .paper { margin-left:calc(50% - 470px); } }
+
+h1 { font-size:clamp(2.2rem,5vw,3.2rem); line-height:1.08; font-weight:600; letter-spacing:-.015em; margin:0 0 1rem; text-wrap:balance; }
+h2 { font-size:1.55rem; font-weight:600; margin:3rem 0 .6rem; padding-top:1rem; border-top:2px solid var(--ink); }
+h2 span { font-family:"IBM Plex Mono",monospace; font-size:.85rem; font-weight:500; color:var(--muted); margin-right:.6rem; }
+p { margin:.6rem 0; }
+.authors { font-size:1.25rem; margin:0; }
+.affil { color:var(--muted); font-size:1rem; margin:.1rem 0 1.4rem; }
+.abstract { border-block:1px solid var(--rule); padding:1rem 0; margin:1.2rem 0; font-size:1.08rem; }
+.abstract b { font-variant:small-caps; letter-spacing:.06em; font-size:1.05em; }
+.kw { display:flex; flex-wrap:wrap; gap:.4rem; margin:.8rem 0 0; padding:0; list-style:none; font-family:"IBM Plex Mono",monospace; font-size:.76rem; }
+.kw li { border:1px solid var(--ink); border-radius:2px; padding:.05rem .5rem; }
+
+/* red-ink margin notes */
+.side { font-family:"Caveat",cursive; font-weight:600; font-size:1.45rem; line-height:1.05; color:var(--red); display:block; border-left:3px solid var(--red); padding-left:.7rem; margin:.7rem 0; transform:rotate(-1deg); }
+@media (min-width:1180px){ .side { float:right; clear:right; width:230px; margin:0 -270px 0 0; } }
+
+/* figure */
+figure { margin:1.4rem 0; }
+.fig { border:1px solid var(--ink); background:#fff; padding:.6rem; }
+.fig svg { width:100%; height:auto; display:block; }
+.toggle { display:flex; gap:.5rem; margin:.7rem 0 .2rem; flex-wrap:wrap; }
+.toggle button { font-family:"IBM Plex Mono",monospace; font-size:.8rem; padding:.4rem .8rem; border:1px solid var(--ink); background:#fff; color:var(--ink); cursor:pointer; border-radius:2px; }
+.toggle button[aria-pressed="true"] { background:var(--ink); color:#fff; }
+figcaption { font-size:.98rem; color:var(--muted); margin-top:.5rem; }
+figcaption b { color:var(--ink); }
+#fig .pool { stroke:var(--ink); stroke-width:3; stroke-dasharray:8 6; transition:opacity .5s; }
+#fig .within { stroke-width:3.5; transition:opacity .5s; }
+#fig[data-mode="pooled"] .within { opacity:0; }
+#fig[data-mode="within"] .pool { opacity:.12; }
+#fig .pt { transition:opacity .4s; }
+#fig[data-mode="pooled"] .pt { fill:#8a8579; }
+.axis { stroke:var(--ink); stroke-width:1.2; }
+.tick { font-family:"IBM Plex Mono",monospace; font-size:11px; fill:var(--muted); }
+
+/* table */
+table { width:100%; border-collapse:collapse; font-size:1.02rem; margin:.8rem 0; border-block:2px solid var(--ink); }
+caption { text-align:left; font-size:.98rem; color:var(--muted); padding-bottom:.4rem; caption-side:top; }
+caption b { color:var(--ink); }
+th { text-align:left; font-family:"IBM Plex Mono",monospace; font-weight:500; font-size:.76rem; text-transform:uppercase; letter-spacing:.05em; border-bottom:1px solid var(--ink); padding:.4rem .5rem; }
+td { padding:.35rem .5rem; border-bottom:1px solid var(--rule); vertical-align:top; }
+td:first-child { font-family:"IBM Plex Mono",monospace; font-size:.85rem; white-space:nowrap; color:var(--muted); }
+tr.now td { background:var(--hi); }
+
+pre { background:#1d1d1f; color:#fbf9f4; padding:.9rem 1rem; overflow-x:auto; font-size:.9rem; line-height:1.5; margin:.8rem 0; border-radius:3px; }
+pre .c { color:#9d978a; }
+
+.findings { list-style:none; padding:0; counter-reset:f; }
+.findings li { counter-increment:f; padding-left:2.6rem; position:relative; margin:1rem 0; }
+.findings li::before { content:"3." counter(f); position:absolute; left:0; font-family:"IBM Plex Mono",monospace; font-size:.85rem; color:var(--muted); top:.35rem; }
+.findings b { font-weight:600; }
+sup a { font-family:"IBM Plex Mono",monospace; font-size:.8rem; text-decoration:none; }
+
+.refs { padding-left:0; list-style:none; counter-reset:r; font-size:1rem; line-height:1.45; }
+.refs li { counter-increment:r; padding-left:2.2rem; position:relative; margin:.75rem 0; }
+.refs li::before { content:"[" counter(r) "]"; position:absolute; left:0; font-family:"IBM Plex Mono",monospace; font-size:.85rem; color:var(--muted); }
+.refs li:target { background:var(--hi); }
+
+.contact { font-size:1.1rem; }
+.contact dt { font-family:"IBM Plex Mono",monospace; font-size:.76rem; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-top:.8rem; }
+.contact dd { margin:0; }
+footer { border-top:2px solid var(--ink); margin-top:3rem; padding-top:.8rem; font-family:"IBM Plex Mono",monospace; font-size:.76rem; color:var(--muted); display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } html{ scroll-behavior:auto; } }
+@media print { .side, .toggle { display:none; } }
+</style>
+</head>
+<body>
+<div class="strip"><div><span>Working paper · No. 1 · <span id="yr"></span></span><span>Preprint · not yet peer reviewed (be kind) · <a href="../">Home</a> · <a href="../industry/">Industry version →</a></span></div></div>
+
+<main class="paper">
+  <h1>Studying people as they change: methods for behavior over time</h1>
+  <p class="authors"><b>Xiao Yang, Ph.D.</b><sup>1</sup></p>
+  <p class="affil"><sup>1</sup> Independent Researcher · Quantitative Psychology &amp; Data Science</p>
+
+  <div class="abstract">
+    <span class="side">Reviewer 2 suggests more feedback loops. Accepted.</span>
+    <p><b>Abstract.</b> Human behavior is a moving target. I build methods from dynamic systems, networks, control theory, and machine learning to study how people change, and to design help that fits the individual. I apply them to depression, digital well-being, and everyday phone use.</p>
+    <ul class="kw" aria-label="Keywords"><li>digital phenotyping</li><li>network models</li><li>Boolean control</li><li>Screenomics</li><li>intensive longitudinal data</li></ul>
+  </div>
+
+  <h2><span>1</span>Why the individual?</h2>
+  <p>Pool everyone together and a trend can point one way, while within every single person it points the other. Try it.</p>
+  <figure>
+    <span class="side">Yes, this really happens. Constantly.</span>
+    <div class="fig">
+      <svg id="fig" data-mode="pooled" viewBox="0 0 640 320" role="img" aria-labelledby="figdesc">
+        <title id="figdesc">Simulated scatterplot of four people. Pooled together, more phone time goes with lower mood. Within each person, more phone time goes with higher mood.</title>
+        <line class="axis" x1="50" y1="280" x2="620" y2="280"/><line class="axis" x1="50" y1="20" x2="50" y2="280"/>
+        <text class="tick" x="335" y="308" text-anchor="middle">time on phone →</text>
+        <text class="tick" transform="translate(16 150) rotate(-90)" text-anchor="middle">mood →</text>
+        <g id="pts"></g><g id="lines"></g>
+      </svg>
+    </div>
+    <div class="toggle" role="group" aria-label="Figure view">
+      <button type="button" data-mode="pooled" aria-pressed="true">Pool everyone</button>
+      <button type="button" data-mode="within" aria-pressed="false">Look within each person</button>
+    </div>
+    <figcaption><b>Figure 1.</b> Same simulated data, opposite conclusions. The dashed line is the pooled trend; colored lines are each person's own. Studying individuals is the whole idea.</figcaption>
+  </figure>
+
+  <h2><span>2</span>Training and appointments</h2>
+  <span class="side">Note the U-turn from control systems to psychology. Not a detour.</span>
+  <table>
+    <caption><b>Table 1.</b> From control systems to human systems.</caption>
+    <thead><tr><th>Years</th><th>Role · Institution</th></tr></thead>
+    <tbody>
+      <tr class="now"><td>2024–now</td><td>Independent researcher · digital well-being research with ASU, sensing apps, AI screen-time helper</td></tr>
+      <tr><td>2023–24</td><td>Assistant Professor · Northeastern University (Health Sciences &amp; Computer Sciences)</td></tr>
+      <tr><td>2021–23</td><td>Sr. Data Scientist, Passive Sensing Research Lead · Mindstrong Health</td></tr>
+      <tr><td>2020–21</td><td>Postdoctoral Researcher · Stanford University, Psychology</td></tr>
+      <tr><td>2015–20</td><td>Ph.D., Quantitative Psychology (Human Development &amp; Family Studies) · Penn State, with Nilam Ram</td></tr>
+      <tr><td>2011–15</td><td>Research Associate · Beijing Academy of Educational Sciences</td></tr>
+      <tr><td>2009–11</td><td>Quantitative Analyst · Bayview Asset Management</td></tr>
+      <tr><td>2007–09</td><td>M.A., Statistics · Columbia University</td></tr>
+      <tr><td>2004–07</td><td>M.S., Computer Science · Tsinghua University</td></tr>
+      <tr><td>2000–04</td><td>B.S., Control Systems Engineering · Tsinghua University</td></tr>
+    </tbody>
+  </table>
+
+  <h2><span>3</span>Findings, briefly</h2>
+  <ol class="findings">
+    <li><b>Phones are sensors.</b> Passive phone behavior tracks depressive symptoms when within- and between-person effects are separated.<sup><a href="#r2">[2]</a></sup></li>
+    <li><b>Emotions form networks.</b> Feedback loops among feelings and behaviors relate to depression and anxiety.<sup><a href="#r4">[4]</a><a href="#r8">[8]</a></sup></li>
+    <li><b>Systems can be nudged.</b> Boolean networks reveal the smallest push that flips a system toward a healthier state.<sup><a href="#r3">[3]</a><a href="#r1">[1]</a></sup></li>
+    <li><b>Screens leave a trail.</b> Sequences of screenshots show how color, text, and sentiment predict task switching.<sup><a href="#r5">[5]</a><a href="#r6">[6]</a><a href="#r7">[7]</a></sup></li>
+  </ol>
+
+  <h2><span>4</span>Software and materials</h2>
+  <span class="side">No laptops were harmed.</span>
+  <p><b>POMPOM</b> simulates a nudge and traces how it spreads through a person's emotion network.</p>
+<pre class="mono"><span class="c"># R</span>
+install.packages("pompom")
+library(pompom)</pre>
+  <p><a href="https://cran.r-project.org/web/packages/pompom/index.html">POMPOM on CRAN</a> · <a href="https://vwendy.github.io/selftrack_website/">SelfTrack</a> (Android app linking phone habits and mood) · Tutorials: <a href="https://vwendy.github.io/xiaoyang-website/boolean-network-data-analysis-tutorial.html">Boolean networks</a>, <a href="https://vwendy.github.io/xiaoyang-website/Three_node_exmaple.html">impulse response</a>, <a href="https://quantdev.ssri.psu.edu/tutorials/apa-ati-intensive-longitudinal-data-session-j-generalized-multilevel-model-poisson">multilevel models</a>.</p>
+
+  <h2><span>5</span>References</h2>
+  <ol class="refs">
+    <li id="r1">Yang, X., Albert, R., Molloy, L. E., &amp; Ram, N. (2024). Modeling and managing behavior change in groups: A Boolean network method. <i>advances.in/psychology</i>. <a href="https://advances.in/psychology/10.56296/aip00009/">Link</a></li>
+    <li id="r2">Yang, X., Knights, J., Bangieva, V., &amp; Kambhampati, S. (2023). Association between the severity of depressive symptoms and human-smartphone interactions: Longitudinal study. <i>JMIR Formative Research</i>. <a href="https://formative.jmir.org/2023/1/e42935">Link</a></li>
+    <li id="r3">Yang, X., Ram, N., Molenaar, P. C. M., &amp; Cole, P. M. (2021). Describing and controlling multivariate nonlinear dynamics: A Boolean network approach. <i>Multivariate Behavioral Research</i>. <a href="https://doi.org/10.1080/00273171.2021.1911772">Link</a> · <a href="https://osf.io/24ze6/">Preprint</a></li>
+    <li id="r4">Yang, X., Ram, N., Lougheed, J. P., Molenaar, P. C. M., &amp; Hollenstein, T. (2019). Adolescents' emotion system dynamics: Network-based analysis of physiological and emotional experience. <i>Developmental Psychology</i>. <a href="https://doi.org/10.1037/dev0000690">Publisher</a></li>
+    <li id="r5">Yang, X., Ram, N., Robinson, T., &amp; Reeves, B. (2019). Using screenshots to predict task switching on smartphones. <i>CHI '19 Late Breaking Work</i>. <a href="https://doi.org/10.1145/3290607.3313089">Publisher</a></li>
+    <li id="r6">Ram, N., Yang, X., Cho, M. J., Brinberg, M., Muirhead, F., Reeves, B., &amp; Robinson, T. (2019). Screenomics: A new approach for observing and studying individuals' digital lives. <i>Journal of Adolescent Research</i>. <a href="https://doi.org/10.1177/0743558419883362">Link</a></li>
+    <li id="r7">Reeves, B., Ram, N., Robinson, T., et al. (2019). Screenomics: A framework to capture and analyze personal life experiences and the ways that technology shapes them. <i>Human-Computer Interaction</i>. <a href="https://doi.org/10.1080/07370024.2019.1578652">Link</a></li>
+    <li id="r8">Yang, X., Ram, N., Gest, S., Lydon-Staley, D., Conroy, D. E., Pincus, A. L., &amp; Molenaar, P. C. M. (2018). Socioemotional dynamics of emotion regulation and depressive symptoms: A person-specific network approach. <i>Complexity</i>. <a href="https://doi.org/10.1155/2018/5094179">Publisher</a></li>
+  </ol>
+
+  <h2><span>6</span>Correspondence</h2>
+  <dl class="contact">
+    <dt>Email</dt><dd><a href="mailto:vwendy@gmail.com">vwendy@gmail.com</a></dd>
+    <dt>Elsewhere</dt><dd><a href="https://www.linkedin.com/in/xiao-yang-ph-d-1ab546153/">LinkedIn</a></dd>
+    <dt>Collaboration</dt><dd>Open to research partnerships and data-science projects.</dd>
+    <dt>Funding</dt><dd>Curiosity.</dd>
+    <dt>Conflicts of interest</dt><dd>An unreasonable fondness for feedback loops.</dd>
+  </dl>
+  <footer><span>© <span id="yr2"></span> Xiao Yang</span><a href="#top" onclick="scrollTo(0,0);return false;">Back to top ↑</a></footer>
+</main>
+
+<script>
+document.getElementById('yr').textContent = document.getElementById('yr2').textContent = new Date().getFullYear();
+
+/* Figure 1: Simpson's paradox with seeded simulated data */
+(function () {
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const people = [
+    { c: [2.2, 7.4], col: '#c0392b' }, { c: [4.4, 5.6], col: '#1f7a5a' },
+    { c: [6.6, 4.1], col: '#1f4e79' }, { c: [8.6, 2.3], col: '#b27300' }
+  ];
+  const sx = (x) => 50 + x * 57, sy = (y) => 280 - y * 28;
+  const ns = 'http://www.w3.org/2000/svg';
+  const mk = (n, a) => { const e = document.createElementNS(ns, n); for (const k in a) e.setAttribute(k, a[k]); return e; };
+  const pts = document.getElementById('pts'), lines = document.getElementById('lines');
+  const all = [];
+  people.forEach((p) => {
+    const mine = [];
+    for (let i = 0; i < 14; i++) {
+      const x = p.c[0] + (rnd() - .5) * 2.2;
+      const y = p.c[1] + 0.85 * (x - p.c[0]) + (rnd() - .5) * 0.7;
+      mine.push([x, y]); all.push([x, y]);
+      pts.appendChild(mk('circle', { class: 'pt', cx: sx(x), cy: sy(y), r: 4.5, fill: p.col, opacity: .85 }));
+    }
+    p.pts = mine;
+  });
+  const fit = (d) => {
+    const n = d.length, mx = d.reduce((s, v) => s + v[0], 0) / n, my = d.reduce((s, v) => s + v[1], 0) / n;
+    let sxy = 0, sxx = 0; d.forEach(([x, y]) => { sxy += (x - mx) * (y - my); sxx += (x - mx) ** 2; });
+    const b = sxy / sxx; return { b, a: my - b * mx };
+  };
+  const draw = (f, x0, x1, cls, col) => lines.appendChild(mk('line', { class: cls, x1: sx(x0), y1: sy(f.a + f.b * x0), x2: sx(x1), y2: sy(f.a + f.b * x1), stroke: col }));
+  draw(fit(all), 0.8, 9.6, 'pool', '#1d1d1f');
+  people.forEach((p) => { const xs = p.pts.map((v) => v[0]); draw(fit(p.pts), Math.min(...xs), Math.max(...xs), 'within', p.col); });
+  const svg = document.getElementById('fig');
+  document.querySelectorAll('.toggle button').forEach((b) => b.addEventListener('click', () => {
+    svg.dataset.mode = b.dataset.mode;
+    document.querySelectorAll('.toggle button').forEach((o) => o.setAttribute('aria-pressed', String(o === b)));
+  }));
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xiao Yang, Ph.D. | Research Scientist for Digital Health</title>
+<meta name="description" content="Xiao Yang, Ph.D. - independent research scientist. Behavioral metrics, sensing pipelines, and measurement strategy for digital mental-health and well-being products.">
+<meta name="theme-color" content="#080b14">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root { --bg:#080b14; --panel:#0f1424; --line:#1f2740; --text:#e8ecf7; --dim:#8b95b3; --cyan:#5ef2ff; --lime:#b8ff5c; --pink:#ff5fa2; --amber:#ffbe3b; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:4rem; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:"Space Grotesk",system-ui,sans-serif; line-height:1.55; }
+a { color:inherit; }
+:focus-visible { outline:2px solid var(--cyan); outline-offset:3px; }
+.wrap { width:min(1120px,calc(100% - 2rem)); margin:0 auto; }
+.mono { font-family:"JetBrains Mono",ui-monospace,monospace; }
+
+.bar { position:sticky; top:0; z-index:10; background:rgba(8,11,20,.88); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+.bar .wrap { display:flex; justify-content:space-between; align-items:center; min-height:3.4rem; gap:1rem; }
+.bar b { font-family:"JetBrains Mono",monospace; font-weight:700; letter-spacing:.04em; }
+.bar b i { color:var(--cyan); font-style:normal; }
+.bar nav { display:flex; gap:1.2rem; align-items:center; font-family:"JetBrains Mono",monospace; font-size:.8rem; }
+.bar nav a { text-decoration:none; color:var(--dim); }
+.bar nav a:hover { color:var(--cyan); }
+.bar nav a.alt { border:1px solid var(--line); border-radius:999px; padding:.2rem .8rem; }
+.bar nav a.cta { color:var(--bg); background:var(--lime); border-radius:999px; padding:.25rem .9rem; font-weight:700; }
+.bar nav a.cta:hover { background:#fff; color:var(--bg); }
+@media (max-width:800px){ .bar nav a:not(.cta):not(.alt){ display:none; } }
+@media (max-width:520px){ .bar nav a.alt { display:none; } }
+
+/* hero */
+.hero { position:relative; min-height:min(94vh,820px); padding-bottom:400px; border-bottom:1px solid var(--line); overflow:hidden; }
+#scope { position:absolute; inset:0; width:100%; height:100%; display:block; cursor:crosshair; touch-action:manipulation; }
+.hero-text { position:relative; z-index:1; padding-top:2.6rem; pointer-events:none; }
+.hero-text > * { pointer-events:auto; }
+.tag { font-family:"JetBrains Mono",monospace; font-size:.78rem; color:var(--cyan); letter-spacing:.08em; text-transform:uppercase; margin:0; }
+h1 { font-size:clamp(2.5rem,6.6vw,5.4rem); line-height:.98; letter-spacing:-.04em; margin:.7rem 0 1rem; font-weight:700; max-width:17ch; text-wrap:balance; }
+h1 span { color:var(--cyan); }
+.sub { max-width:52ch; font-size:1.2rem; color:var(--dim); margin:0 0 1.4rem; }
+.btns { display:flex; gap:.8rem; flex-wrap:wrap; }
+.btn { font-family:"JetBrains Mono",monospace; font-size:.85rem; font-weight:700; text-decoration:none; border-radius:999px; padding:.7rem 1.4rem; border:1px solid var(--lime); background:var(--lime); color:var(--bg); transition:transform .15s, box-shadow .15s; }
+.btn:hover { transform:translateY(-2px); box-shadow:0 8px 24px -8px var(--lime); }
+.btn.ghost { background:transparent; color:var(--text); border-color:var(--dim); }
+.btn.ghost:hover { box-shadow:none; border-color:var(--cyan); color:var(--cyan); }
+.hint { position:absolute; z-index:1; right:1rem; bottom:4.6rem; font-family:"JetBrains Mono",monospace; font-size:.74rem; color:var(--dim); text-align:right; pointer-events:none; }
+.nudge { position:absolute; z-index:2; left:0; right:0; bottom:.9rem; }
+.nudge .wrap { display:flex; gap:.5rem; flex-wrap:wrap; align-items:center; font-family:"JetBrains Mono",monospace; font-size:.75rem; color:var(--dim); }
+.nudge button { font:inherit; background:transparent; color:var(--c); border:1px solid var(--c); border-radius:999px; padding:.25rem .8rem; cursor:pointer; }
+.nudge button:hover { background:var(--c); color:var(--bg); }
+@media (max-width:640px){ .hint { display:none; } }
+
+/* proof strip */
+.proof { padding:0; border-bottom:1px solid var(--line); }
+.proof .wrap { display:grid; grid-template-columns:repeat(4,1fr); }
+.stat { padding:1.6rem 1.2rem; border-left:1px solid var(--line); }
+.stat:first-child { border-left:0; padding-left:0; }
+.stat b { display:block; font-size:2.1rem; line-height:1; letter-spacing:-.03em; color:var(--c); }
+.stat span { display:block; margin-top:.4rem; font-size:.9rem; color:var(--dim); line-height:1.3; }
+@media (max-width:760px){ .proof .wrap { grid-template-columns:1fr 1fr; } .stat:nth-child(3) { border-left:0; padding-left:0; } .stat { border-bottom:1px solid var(--line); } }
+
+section { padding:4.5rem 0; border-bottom:1px solid var(--line); }
+.label { font-family:"JetBrains Mono",monospace; font-size:.8rem; color:var(--cyan); letter-spacing:.08em; text-transform:uppercase; margin:0; }
+h2 { font-size:clamp(1.9rem,4vw,3rem); line-height:1.05; letter-spacing:-.03em; margin:.4rem 0 2rem; max-width:22ch; }
+h3 { font-weight:700; }
+
+/* capabilities */
+.chan { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+.ch { background:var(--panel); border:1px solid var(--line); border-top:3px solid var(--c); border-radius:10px; padding:1rem; display:flex; flex-direction:column; gap:.6rem; transition:transform .2s, border-color .2s; }
+.ch:hover { transform:translateY(-4px); border-color:var(--c); }
+.ch .id { font-family:"JetBrains Mono",monospace; font-size:.72rem; color:var(--c); }
+.ch h3 { margin:0; font-size:1.25rem; line-height:1.15; }
+.ch p { margin:0; color:var(--dim); font-size:.95rem; flex:1; }
+.spark { width:100%; height:40px; }
+.spark path { fill:none; stroke:var(--c); stroke-width:2; stroke-linecap:round; stroke-dasharray:400; stroke-dashoffset:400; animation:draw 2.4s ease forwards infinite alternate; }
+@keyframes draw { to { stroke-dashoffset:0; } }
+@media (max-width:920px){ .chan { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:520px){ .chan { grid-template-columns:1fr; } }
+
+/* case cards */
+.cases { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+.case { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:1.4rem; display:flex; flex-direction:column; gap:.6rem; position:relative; overflow:hidden; }
+.case::before { content:""; position:absolute; inset:0 auto 0 0; width:4px; background:var(--c); }
+.case .meta { font-family:"JetBrains Mono",monospace; font-size:.74rem; color:var(--c); text-transform:uppercase; letter-spacing:.05em; }
+.case h3 { margin:0; font-size:1.5rem; line-height:1.1; letter-spacing:-.02em; }
+.case p { margin:0; color:var(--dim); flex:1; }
+.case a { font-family:"JetBrains Mono",monospace; font-size:.8rem; color:var(--c); }
+@media (max-width:860px){ .cases { grid-template-columns:1fr; } }
+
+/* engagements */
+.how { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+.mode { border:1px dashed #33406a; border-radius:12px; padding:1.4rem; }
+.mode .n { font-family:"JetBrains Mono",monospace; color:var(--lime); font-size:.8rem; }
+.mode h3 { margin:.3rem 0 .4rem; font-size:1.6rem; letter-spacing:-.02em; }
+.mode p { margin:0; color:var(--dim); }
+@media (max-width:860px){ .how { grid-template-columns:1fr; } }
+
+.stack { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:2.2rem; }
+.stack li { list-style:none; font-family:"JetBrains Mono",monospace; font-size:.8rem; border:1px solid var(--line); background:var(--panel); border-radius:6px; padding:.3rem .7rem; }
+.stack-wrap { margin:0; padding:0; }
+.stack-title { margin-top:2.4rem; }
+
+/* tracks */
+.legend { display:flex; flex-wrap:wrap; gap:.4rem 1.2rem; font-family:"JetBrains Mono",monospace; font-size:.75rem; color:var(--dim); margin-bottom:1.4rem; }
+.legend i { display:inline-block; width:.7rem; height:.7rem; border-radius:2px; margin-right:.4rem; background:var(--c); }
+.axis { display:grid; grid-template-columns:260px 1fr; font-family:"JetBrains Mono",monospace; font-size:.72rem; color:var(--dim); margin-bottom:.3rem; }
+.axis div { position:relative; height:1.2rem; }
+.axis div span { position:absolute; transform:translateX(-50%); }
+.row { display:grid; grid-template-columns:260px 1fr; align-items:center; border-top:1px solid var(--line); min-height:2.7rem; }
+.row .who { font-size:.9rem; line-height:1.25; padding:.4rem 1rem .4rem 0; }
+.row .who small { display:block; color:var(--dim); font-size:.78rem; }
+.row .lane { position:relative; height:1.5rem; background:repeating-linear-gradient(90deg,transparent 0 calc(100%/26 - 1px),rgba(255,255,255,.04) calc(100%/26 - 1px) calc(100%/26)); }
+.bar-x { position:absolute; top:0; bottom:0; border-radius:4px; background:var(--c); box-shadow:0 0 14px -2px var(--c); }
+.row:hover .bar-x { filter:brightness(1.25); }
+.row.now .bar-x { animation:glow 2s ease-in-out infinite; }
+@keyframes glow { 50% { box-shadow:0 0 24px 2px var(--c); } }
+@media (max-width:720px){ .axis { display:none; } .row { grid-template-columns:1fr; padding:.5rem 0; } .row .lane { height:.5rem; margin-top:.3rem; } }
+
+/* papers & tools */
+.paper { display:grid; grid-template-columns:4.5rem 1fr; gap:1rem; padding:.9rem 0; border-top:1px solid var(--line); }
+.paper[hidden] { display:none; }
+.paper time { font-family:"JetBrains Mono",monospace; color:var(--c); font-size:.9rem; }
+.paper h3 { margin:0 0 .15rem; font-size:1.05rem; font-weight:500; line-height:1.3; }
+.paper p { margin:0; color:var(--dim); font-size:.85rem; }
+.paper a { font-family:"JetBrains Mono",monospace; font-size:.78rem; color:var(--c); }
+.more { margin-top:1rem; font-family:"JetBrains Mono",monospace; font-size:.8rem; color:var(--cyan); background:transparent; border:1px solid var(--line); border-radius:999px; padding:.4rem 1rem; cursor:pointer; }
+.more:hover { border-color:var(--cyan); }
+.tools { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+.tool { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:1.2rem; }
+.tool h3 { margin:.2rem 0 .4rem; font-size:1.5rem; }
+.tool p { color:var(--dim); margin:0 0 .8rem; font-size:.95rem; }
+.tool code { display:block; background:#05070e; border:1px solid var(--line); border-radius:6px; padding:.6rem .8rem; font-family:"JetBrains Mono",monospace; font-size:.8rem; color:var(--lime); margin-bottom:.8rem; overflow-x:auto; white-space:nowrap; }
+.tool ul { list-style:none; margin:0; padding:0; font-size:.92rem; }
+.tool li + li { margin-top:.4rem; }
+.tool a { color:var(--cyan); }
+@media (max-width:860px){ .tools { grid-template-columns:1fr; } }
+
+.hello { text-align:center; padding:6rem 0; border:0; }
+.hello h2 { margin-inline:auto; max-width:16ch; }
+.hello .lead { color:var(--dim); max-width:44ch; margin:-1rem auto 2rem; font-size:1.1rem; }
+.hello .big { font-family:"JetBrains Mono",monospace; font-size:clamp(1rem,3vw,1.6rem); text-decoration:none; color:var(--lime); border:1px solid var(--lime); border-radius:999px; padding:.7rem 1.6rem; display:inline-block; transition:background .2s,color .2s; overflow-wrap:anywhere; }
+.hello .big:hover { background:var(--lime); color:var(--bg); }
+.caret { display:inline-block; width:.6ch; background:var(--lime); height:1em; vertical-align:-.12em; margin-left:.2ch; animation:blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity:0; } }
+footer { padding:1.5rem 0 2.5rem; color:var(--dim); font-family:"JetBrains Mono",monospace; font-size:.75rem; }
+footer .wrap { display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+@media (prefers-reduced-motion:reduce){ *,*::before,*::after { animation:none!important; transition:none!important; } .spark path { stroke-dashoffset:0; } html{scroll-behavior:auto;} }
+</style>
+</head>
+<body>
+<div class="bar"><div class="wrap">
+  <a href="../" style="text-decoration:none"><b>XIAO<i>_</i>YANG</b></a>
+  <nav aria-label="Main navigation">
+    <a href="#work">/work</a><a href="#how">/how</a><a href="#background">/background</a><a href="#tools">/tools</a>
+    <a class="alt" href="../academic/">academic version →</a>
+    <a class="cta" href="#hello">work with me</a>
+  </nav>
+</div></div>
+
+<header class="hero" id="top">
+  <canvas id="scope" aria-label="A live simulation of four coupled signals: mood, sleep, stress and screens. Click a trace to perturb it and watch the others respond." role="img"></canvas>
+  <div class="wrap hero-text">
+    <p class="tag">independent research scientist · digital health &amp; behavioral AI</p>
+    <h1>Behavior is a signal. I turn it into <span>metrics you can ship.</span></h1>
+    <p class="sub">Quantitative psychologist and data scientist. I build the sensing, models, and measures behind digital mental-health and well-being products.</p>
+    <div class="btns"><a class="btn" href="#hello">Work with me</a><a class="btn ghost" href="#work">See what I build</a></div>
+  </div>
+  <p class="hint">click a trace to perturb it →<br>watch the others respond</p>
+  <div class="nudge"><div class="wrap"><span>nudge:</span>
+    <button type="button" style="--c:var(--cyan)" data-ch="0">mood</button>
+    <button type="button" style="--c:var(--lime)" data-ch="1">sleep</button>
+    <button type="button" style="--c:var(--pink)" data-ch="2">stress</button>
+    <button type="button" style="--c:var(--amber)" data-ch="3">screens</button>
+  </div></div>
+</header>
+
+<section class="proof" aria-label="At a glance"><div class="wrap">
+  <div class="stat" style="--c:var(--cyan)"><b>17 yrs</b><span>applied modeling, from finance to mental health</span></div>
+  <div class="stat" style="--c:var(--lime)"><b>Startup-tested</b><span>research lead at Mindstrong Health</span></div>
+  <div class="stat" style="--c:var(--pink)"><b>Ph.D.</b><span>quantitative psychology, plus stats, CS, and control engineering</span></div>
+  <div class="stat" style="--c:var(--amber)"><b>Shipped tools</b><span>POMPOM on CRAN, SelfTrack for Android</span></div>
+</div></section>
+
+<section id="capabilities"><div class="wrap">
+  <p class="label">// what I do</p>
+  <h2>From raw signals to decisions</h2>
+  <div class="chan">
+    <article class="ch" style="--c:var(--cyan)"><span class="id">01</span>
+      <svg class="spark" viewBox="0 0 200 44" preserveAspectRatio="none" aria-hidden="true"><path d="M0 24 Q10 4 20 24 T40 24 T60 22 Q70 2 80 22 T100 26 T120 20 Q130 0 140 20 T160 26 T180 22 T200 24"/></svg>
+      <h3>Behavioral metrics from sensor data</h3><p>Turn passive phone and wearable streams into interpretable features that track mood, well-being, and risk.</p></article>
+    <article class="ch" style="--c:var(--lime)"><span class="id">02</span>
+      <svg class="spark" viewBox="0 0 200 44" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 Q25 4 50 22 T100 22 Q125 40 150 14 T200 20"/></svg>
+      <h3>Study design &amp; measurement</h3><p>Protocols, surveys, and event-triggered sampling that produce data you can trust, then the analysis to read it.</p></article>
+    <article class="ch" style="--c:var(--pink)"><span class="id">03</span>
+      <svg class="spark" viewBox="0 0 200 44" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34 H40 V10 H90 V34 H130 V10 H160 V34 H200"/></svg>
+      <h3>Sensing apps &amp; dashboards</h3><p>Android apps for passive tracking and in-the-moment surveys, with R Shiny dashboards on top.</p></article>
+    <article class="ch" style="--c:var(--amber)"><span class="id">04</span>
+      <svg class="spark" viewBox="0 0 200 44" preserveAspectRatio="none" aria-hidden="true"><path d="M0 12 L20 12 L20 32 L44 32 L44 8 L70 8 L70 28 L104 28 L104 14 L130 14 L130 34 L160 34 L160 10 L200 10"/></svg>
+      <h3>AI for well-being</h3><p>Prototype generative-AI assistants, like one that helps people manage their screen time and relationship with their phone.</p></article>
+  </div>
+  <h3 class="label stack-title">// works with</h3>
+  <ul class="stack stack-wrap" aria-label="Skills and data types">
+    <li>R</li><li>Python</li><li>SQL</li><li>GitHub</li><li>S3</li><li>R Shiny</li><li>Android</li><li>Machine learning</li><li>Time-series</li><li>Multilevel models</li><li>Psychometrics</li><li>Propensity scores</li><li>ECG &amp; GSR</li><li>Eye tracking</li><li>Passive sensing</li>
+  </ul>
+</div></section>
+
+<section id="work"><div class="wrap">
+  <p class="label">// selected work</p>
+  <h2>Things I've built and led</h2>
+  <div class="cases">
+    <article class="case" style="--c:var(--cyan)"><span class="meta">Mindstrong Health · 2021–23</span><h3>Passive sensing for depression and anxiety</h3>
+      <p>As research lead, I built new behavioral metrics from human-phone interactions to monitor risk for severe depression and anxiety, and helped set data science strategy across teams.</p>
+      <a href="https://formative.jmir.org/2023/1/e42935">Peer-reviewed paper →</a></article>
+    <article class="case" style="--c:var(--lime)"><span class="meta">Arizona State University · 2024–now</span><h3>Adolescent digital well-being</h3>
+      <p>I own the statistical side of a research program: study design, data collection, analysis, and reporting.</p></article>
+    <article class="case" style="--c:var(--pink)"><span class="meta">Shipped app · SelfTrack</span><h3>Phone habits and mood, privately</h3>
+      <p>An Android app that logs app use, asks for quick mood check-ins, and shows people whether the two move together. Everything stays on the phone.</p>
+      <a href="https://vwendy.github.io/selftrack_website/">Explore SelfTrack →</a></article>
+  </div>
+</div></section>
+
+<section id="how"><div class="wrap">
+  <p class="label">// working together</p>
+  <h2>Three ways to start</h2>
+  <div class="how">
+    <article class="mode"><span class="n">01</span><h3>Advise</h3><p>A focused engagement to pressure-test your measurement strategy, study design, or model before you build on it.</p></article>
+    <article class="mode"><span class="n">02</span><h3>Build</h3><p>A defined project: a sensing pipeline, a behavioral metric, a dashboard, or an AI prototype, delivered and documented.</p></article>
+    <article class="mode"><span class="n">03</span><h3>Embed</h3><p>Part-time research lead for your team, setting the data science strategy and mentoring along the way.</p></article>
+  </div>
+</div></section>
+
+<section id="background"><div class="wrap">
+  <p class="label">// background</p>
+  <h2>From control systems to human systems</h2>
+  <div class="legend">
+    <span style="--c:var(--cyan)"><i></i>control &amp; computing</span>
+    <span style="--c:var(--amber)"><i></i>statistics &amp; finance</span>
+    <span style="--c:var(--pink)"><i></i>psychology &amp; education</span>
+    <span style="--c:var(--lime)"><i></i>industry &amp; independent</span>
+  </div>
+  <div id="gantt" role="list"></div>
+</div></section>
+
+<section id="tools"><div class="wrap">
+  <p class="label">// open source &amp; research</p>
+  <h2>Public work you can check</h2>
+  <div class="tools">
+    <article class="tool"><span class="label">R package · CRAN</span><h3>POMPOM</h3>
+      <p>Simulate an intervention and see how it spreads through a person's emotion network.</p>
+      <code>install.packages("pompom")</code>
+      <a href="https://cran.r-project.org/web/packages/pompom/index.html">CRAN page →</a></article>
+    <article class="tool"><span class="label">Android app</span><h3>SelfTrack</h3>
+      <p>Track your app use and mood, then see whether they move together. Data stays on the phone.</p>
+      <code>android · data stays on-device</code>
+      <a href="https://vwendy.github.io/selftrack_website/">Explore →</a></article>
+    <article class="tool"><span class="label">Tutorials</span><h3>Learn the methods</h3>
+      <ul>
+        <li><a href="https://vwendy.github.io/xiaoyang-website/boolean-network-data-analysis-tutorial.html">Boolean-network modeling →</a></li>
+        <li><a href="https://vwendy.github.io/xiaoyang-website/Three_node_exmaple.html">Impulse response, three nodes →</a></li>
+        <li><a href="https://quantdev.ssri.psu.edu/tutorials/apa-ati-intensive-longitudinal-data-session-j-generalized-multilevel-model-poisson">Multilevel modeling →</a></li>
+      </ul></article>
+  </div>
+
+  <h3 class="label stack-title">// peer-reviewed foundations</h3>
+  <div id="plist">
+    <article class="paper" style="--c:var(--pink)"><time>2024</time><div><h3>Modeling and managing behavior change in groups: A Boolean network method</h3><p>Yang, Albert, Molloy &amp; Ram · advances.in/psychology</p><a href="https://advances.in/psychology/10.56296/aip00009/">read →</a></div></article>
+    <article class="paper" style="--c:var(--cyan)"><time>2023</time><div><h3>Association between the severity of depressive symptoms and human-smartphone interactions: Longitudinal study</h3><p>Yang, Knights, Bangieva &amp; Kambhampati · JMIR Formative Research</p><a href="https://formative.jmir.org/2023/1/e42935">read →</a></div></article>
+    <article class="paper" style="--c:var(--pink)"><time>2021</time><div><h3>Describing and controlling multivariate nonlinear dynamics: A Boolean network approach</h3><p>Yang, Ram, Molenaar &amp; Cole · Multivariate Behavioral Research</p><a href="https://doi.org/10.1080/00273171.2021.1911772">read →</a></div></article>
+    <article class="paper" style="--c:var(--amber)"><time>2019</time><div><h3>Using screenshots to predict task switching on smartphones</h3><p>Yang, Ram, Robinson &amp; Reeves · CHI '19 Late Breaking Work</p><a href="https://doi.org/10.1145/3290607.3313089">read →</a></div></article>
+    <article class="paper more-item" hidden style="--c:var(--lime)"><time>2019</time><div><h3>Adolescents' emotion system dynamics: Network-based analysis of physiological and emotional experience</h3><p>Yang, Ram, Lougheed, Molenaar &amp; Hollenstein · Developmental Psychology</p><a href="https://doi.org/10.1037/dev0000690">read →</a></div></article>
+    <article class="paper more-item" hidden style="--c:var(--amber)"><time>2019</time><div><h3>Screenomics: A new approach for observing and studying individuals' digital lives</h3><p>Ram, Yang, Cho, Brinberg, Muirhead, Reeves &amp; Robinson · Journal of Adolescent Research</p><a href="https://doi.org/10.1177/0743558419883362">read →</a></div></article>
+    <article class="paper more-item" hidden style="--c:var(--amber)"><time>2019</time><div><h3>Screenomics: A framework to capture and analyze personal life experiences and the ways that technology shapes them</h3><p>Reeves, Ram, Robinson, et al. · Human-Computer Interaction</p><a href="https://doi.org/10.1080/07370024.2019.1578652">read →</a></div></article>
+    <article class="paper more-item" hidden style="--c:var(--lime)"><time>2018</time><div><h3>Socioemotional dynamics of emotion regulation and depressive symptoms: A person-specific network approach</h3><p>Yang, Ram, Gest, Lydon-Staley, Conroy, Pincus &amp; Molenaar · Complexity</p><a href="https://doi.org/10.1155/2018/5094179">read →</a></div></article>
+  </div>
+  <button class="more" type="button" id="more" aria-expanded="false">show all 8 papers ↓</button>
+  <p style="margin-top:1.2rem;font-size:.9rem;color:var(--dim)">Full academic profile: <a href="../academic/" style="color:var(--cyan)">the research version of this site →</a></p>
+</div></section>
+
+<section class="hello" id="hello"><div class="wrap">
+  <p class="label">// input</p>
+  <h2>Building something behavioral?</h2>
+  <p class="lead">Tell me the problem. I'll tell you honestly whether the data can answer it.</p>
+  <a class="big" href="mailto:vwendy@gmail.com">&gt; vwendy@gmail.com<span class="caret" aria-hidden="true"></span></a>
+  <p style="margin-top:1.4rem"><a class="mono" style="color:var(--dim);font-size:.85rem" href="https://www.linkedin.com/in/xiao-yang-ph-d-1ab546153/">linkedin ↗</a></p>
+</div></section>
+<footer><div class="wrap"><span>© <span id="yr"></span> Xiao Yang</span><a href="#top">back to top ↑</a></div></footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---------- Hero: four coupled signals (a VAR(1) system) ---------- */
+(function () {
+  const cv = document.getElementById('scope'), ctx = cv.getContext('2d');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const names = ['mood', 'sleep', 'stress', 'screens'];
+  const cols = ['#5ef2ff', '#b8ff5c', '#ff5fa2', '#ffbe3b'];
+  let A = [[.86, .12, -.12, -.06], [.12, .84, -.10, -.09], [-.12, -.10, .86, .10], [-.06, -.09, .10, .84]];
+  /* scale so the spectral radius is 0.93 (power iteration), keeping the system stable */
+  (function () {
+    let v = [1, .5, -.3, .2], r = 1;
+    for (let k = 0; k < 200; k++) { const w = A.map((row) => row.reduce((s, a, j) => s + a * v[j], 0)); r = Math.hypot(...w) / Math.hypot(...v); v = w.map((x) => x / Math.hypot(...w)); }
+    A = A.map((row) => row.map((a) => a * 0.93 / r));
+  })();
+  const x = [0, 0, 0, 0], STEP = 3; let hist = [[], [], [], []], W = 0, H = 0, top0 = 0, hover = -1, interacted = false;
+  const gauss = () => (Math.random() + Math.random() + Math.random() - 1.5) * 1.15;
+  const tick = () => {
+    const nx = A.map((row) => row.reduce((s, a, j) => s + a * x[j], 0) + 0.07 * gauss());
+    for (let i = 0; i < 4; i++) { x[i] = Math.max(-2.6, Math.min(2.6, nx[i])); hist[i].push(x[i]); }
+    const max = Math.ceil(W / STEP) + 4; hist.forEach((h) => { while (h.length > max) h.shift(); });
+  };
+  const impulse = (i, m = 2.3) => { x[i] += m; };
+  const layout = () => {
+    const dpr = Math.min(devicePixelRatio || 1, 2), r = cv.getBoundingClientRect();
+    W = r.width; H = r.height;
+    top0 = Math.max(document.querySelector('.hero-text').getBoundingClientRect().bottom - r.top + 24, H * .5);
+    cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  };
+  const lane = (i) => { const span = H - top0 - 70; return { c: top0 + span * (i + .5) / 4, h: span / 4 }; };
+  const draw = () => {
+    ctx.clearRect(0, 0, W, H);
+    for (let i = 0; i < 4; i++) {
+      const { c, h } = lane(i), a = hist[i], amp = h * .38, on = hover === i;
+      ctx.strokeStyle = 'rgba(255,255,255,.06)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(0, c); ctx.lineTo(W, c); ctx.stroke();
+      ctx.fillStyle = cols[i]; ctx.globalAlpha = on ? 1 : .75; ctx.font = '500 12px "JetBrains Mono", monospace';
+      ctx.fillText(names[i], 14, c - h * .3 - 2);
+      ctx.strokeStyle = cols[i]; ctx.lineWidth = on ? 3 : 2; ctx.lineJoin = 'round'; ctx.shadowColor = cols[i]; ctx.shadowBlur = on ? 16 : 8;
+      ctx.beginPath();
+      for (let k = 0; k < a.length; k++) { const px = W - (a.length - 1 - k) * STEP, py = c - a[k] * amp; k ? ctx.lineTo(px, py) : ctx.moveTo(px, py); }
+      ctx.stroke(); ctx.shadowBlur = 0; ctx.globalAlpha = 1;
+    }
+  };
+  const laneAt = (y) => { let best = 0, d = 1e9; for (let i = 0; i < 4; i++) { const dd = Math.abs(y - lane(i).c); if (dd < d) { d = dd; best = i; } } return d < lane(best).h ? best : -1; };
+  const seed = () => { for (let n = 0; n < Math.ceil(W / STEP) + 4; n++) { if (n === 60) impulse(2, 2.2); if (n === 190) impulse(0, 2); tick(); } };
+  const fire = (i) => { interacted = true; impulse(i); };
+
+  layout(); seed(); draw();
+  addEventListener('resize', () => { layout(); hist = [[], [], [], []]; x.fill(0); seed(); draw(); });
+  cv.addEventListener('pointermove', (e) => { hover = laneAt(e.clientY - cv.getBoundingClientRect().top); });
+  cv.addEventListener('pointerleave', () => { hover = -1; });
+  cv.addEventListener('pointerdown', (e) => { const i = laneAt(e.clientY - cv.getBoundingClientRect().top); if (i >= 0) fire(i); });
+  document.querySelectorAll('.nudge button').forEach((b) => b.addEventListener('click', () => fire(+b.dataset.ch)));
+  if (document.fonts) document.fonts.ready.then(() => { layout(); draw(); });
+  if (reduced) return;
+  let last = 0, acc = 0, idle = 0;
+  const loop = (t) => {
+    const dt = Math.min(t - last, 100); last = t; acc += dt; idle += dt;
+    while (acc >= 33) { tick(); acc -= 33; }
+    if (!interacted && idle > 6500 && !document.hidden) { impulse(Math.floor(Math.random() * 4)); idle = 0; }
+    draw(); requestAnimationFrame(loop);
+  };
+  requestAnimationFrame(loop);
+})();
+
+/* ---------- Background timeline ---------- */
+(function () {
+  const C = { ctrl: 'var(--cyan)', stat: 'var(--amber)', psy: 'var(--pink)', ind: 'var(--lime)' };
+  const now = 2026.7, t0 = 2000, span = now - t0;
+  const items = [
+    ['B.S. Control Systems Engineering', 'Tsinghua', 2000, 2004, 'ctrl'],
+    ['M.S. Computer Science', 'Tsinghua', 2004, 2007, 'ctrl'],
+    ['M.A. Statistics', 'Columbia', 2007, 2009, 'stat'],
+    ['Quantitative Analyst', 'Bayview Asset Management', 2009, 2011, 'stat'],
+    ['Research Associate', 'Beijing Academy of Educational Sciences', 2011, 2015, 'psy'],
+    ['Ph.D. Quantitative Psychology', 'Penn State', 2015, 2020, 'psy'],
+    ['Postdoctoral Researcher', 'Stanford', 2020, 2021, 'psy'],
+    ['Sr. Data Scientist, Passive Sensing Lead', 'Mindstrong Health', 2021, 2023, 'ind'],
+    ['Assistant Professor', 'Northeastern', 2023, 2024, 'ctrl'],
+    ['Independent Researcher', 'Digital well-being with ASU', 2024, now, 'ind', true]
+  ];
+  const ticks = [2000, 2005, 2010, 2015, 2020, 2025].map((y) => `<span style="left:${(y - t0) / span * 100}%">${y}</span>`).join('');
+  let html = `<div class="axis" aria-hidden="true"><span></span><div>${ticks}</div></div>`;
+  items.forEach(([role, org, a, b, k, isNow]) => {
+    const yrs = `${a}–${isNow ? 'now' : String(b).slice(2)}`;
+    html += `<div class="row${isNow ? ' now' : ''}" role="listitem" style="--c:${C[k]}"><div class="who">${role}<small>${org} · ${yrs}</small></div><div class="lane"><div class="bar-x" style="left:${(a - t0) / span * 100}%;width:${(b - a) / span * 100}%"></div></div></div>`;
+  });
+  document.getElementById('gantt').innerHTML = html;
+})();
+
+/* ---------- Show all papers ---------- */
+document.getElementById('more').addEventListener('click', function () {
+  const open = this.getAttribute('aria-expanded') === 'true';
+  document.querySelectorAll('.more-item').forEach((p) => { p.hidden = open; });
+  this.setAttribute('aria-expanded', String(!open));
+  this.textContent = open ? 'show all 8 papers ↓' : 'show fewer ↑';
+});
+</script>
+</body>
+</html>
